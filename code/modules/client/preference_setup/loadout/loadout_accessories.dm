@@ -332,7 +332,7 @@
 
 /datum/gear/accessory/ecig
 	display_name = "Electronic Cigarette"
-	path = /obj/item/clothing/mask/smokable/ecig
+	path = /obj/item/clothing/mask/smokable/ecig/simple
 	cost = 2
 
 /datum/gear/accessory/ecigcart

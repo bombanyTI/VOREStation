@@ -12,7 +12,7 @@
 	body_parts_covered = 0
 	var/brightness_on = 1
 	chem_volume = 0 //ecig has no storage on its own but has reagent container created by parent obj
-	item_state = "ecigoff"
+	item_state = "ecigoff1"
 	var/icon_off
 	var/icon_empty
 
