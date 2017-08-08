@@ -243,3 +243,19 @@
 	display_name = "hydroponics winter boots"
 	path = /obj/item/clothing/shoes/boots/winter/hydro
 	allowed_roles = list("Botanist", "Xenobiologist")
+
+/datum/gear/shoes/cuffs
+	display_name = "gilded leg wraps"
+	path = /obj/item/clothing/shoes/black/cuffs
+
+/datum/gear/shoes/cuffs/blue
+	display_name = "blue leg wraps"
+	path = /obj/item/clothing/shoes/black/cuffs/blue
+
+/datum/gear/shoes/cuffs/red
+	display_name = "red leg wraps"
+	path = /obj/item/clothing/shoes/black/cuffs/red
+
+/datum/gear/shoes/cuffs/octavious
+	display_name = "octavious leg wraps"
+	path = /obj/item/clothing/shoes/black/cuffs/octavious
