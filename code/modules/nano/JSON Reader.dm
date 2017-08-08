@@ -1,5 +1,3 @@
-#if DM_VERSION < 510
-
 json_token
 	var
 		value
@@ -80,7 +78,7 @@ json_reader
 		read_number()
 			var/val = ""
 			var/char = get_char()
-			while(is_digit(char) || char == "." || rlowertext(char) == "e")
+			while(is_digit(char) || char == "." || lowertext(char) == "e")
 				val += char
 				i++
 				char = get_char()
@@ -205,5 +203,3 @@ json_reader
 		die(json_token/T)
 			if(!T) T = get_token()
 			CRASH("Unexpected token: [T.value].")
-
-#endif

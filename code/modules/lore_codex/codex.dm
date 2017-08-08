@@ -34,7 +34,7 @@
 
 /obj/item/weapon/book/codex/proc/quick_link(var/search_word)
 	for(var/word in indexed_pages)
-		if(lowertext(search_word) == lowertext(word)) // Exact matches unfortunately limit our ability to perform SEOs.
+		if(rlowertext(search_word) == rlowertext(word)) // Exact matches unfortunately limit our ability to perform SEOs.
 			go_to_page(indexed_pages[word])
 			return
 

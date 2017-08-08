@@ -86,7 +86,7 @@ nanoui is used to open and update nano browser uis
 	add_template("main", ntemplate_filename)
 
 	if (ntitle)
-		title = sanitize(ntitle)
+		title = sanitize(strip_improper(ntitle))
 	if (nwidth)
 		width = nwidth
 	if (nheight)
@@ -175,11 +175,9 @@ nanoui is used to open and update nano browser uis
   * @return /list config data
   */
 /datum/nanoui/proc/get_config_data()
-	var/name = "[src_object]"
-	name = sanitize(name)
 	var/list/config_data = list(
 			"title" = title,
-			"srcObject" = list("name" = name),
+			"srcObject" = list("name" = "[src_object]"),
 			"stateKey" = state_key,
 			"status" = status,
 			"autoUpdateLayout" = auto_update_layout,
@@ -264,7 +262,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/set_layout_key(nlayout_key)
-	layout_key = lowertext(nlayout_key)
+	layout_key = rlowertext(nlayout_key)
 
  /**
   * Set the ui to update the layout (re-render it) on each update, turning this on will break the map ui (if it's being used)
@@ -347,13 +345,13 @@ nanoui is used to open and update nano browser uis
 
 	var/template_data_json = "{}" // An empty JSON object
 	if (templates.len > 0)
-		template_data_json = strip_improper(json_encode(templates))
+		template_data_json = strip_improper(list2json(templates))
 
 	var/list/send_data = get_send_data(initial_data)
-	var/initial_data_json = replacetext(replacetext(json_encode(send_data), "&#34;", "&amp;#34;"), "'", "&#39;")
+	var/initial_data_json = replacetext(replacetext(list2json_usecache(send_data), "&#34;", "&amp;#34;"), "'", "&#39;")
 	initial_data_json = strip_improper(initial_data_json);
 
-	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))
+	var/url_parameters_json = list2json(list("src" = "\ref[src]"))
 
 	return {"
 <!DOCTYPE html>
@@ -467,7 +465,7 @@ nanoui is used to open and update nano browser uis
 	var/list/send_data = get_send_data(data)
 
 	//user << list2json_usecache(send_data) // used for debugging //NANO DEBUG HOOK
-	user << output(list2params(list(strip_improper(json_encode(send_data)))),"[window_id].browser:receiveUpdateData")
+	user << output(list2params(list(strip_improper(list2json_usecache(send_data)))),"[window_id].browser:receiveUpdateData")
 
  /**
   * This Topic() proc is called whenever a user clicks on a link within a Nano UI

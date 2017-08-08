@@ -68,7 +68,7 @@
 
 	//Set up a mob
 	H.species = new_copy
-	H.icon_state = lowertext(new_copy.get_bodytype())
+	H.icon_state = rlowertext(new_copy.get_bodytype())
 
 	if(new_copy.holder_type)
 		H.holder_type = new_copy.holder_type

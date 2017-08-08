@@ -115,7 +115,7 @@ var/global/datum/global_init/init = new ()
 
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
-	
+
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 	Master.Initialize(10, FALSE)
@@ -470,7 +470,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	return 1
 
 /world/proc/load_motd()
-	join_motd = file2text("config/motd.txt")
+	join_motd = russian_to_cp1251(file2text("config/motd.txt"))
 
 
 /proc/load_configuration()

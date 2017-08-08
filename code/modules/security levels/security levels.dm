@@ -79,7 +79,7 @@
 			return "delta"
 
 /proc/seclevel2num(var/seclevel)
-	switch( lowertext(seclevel) )
+	switch( rlowertext(seclevel) )
 		if("green")
 			return SEC_LEVEL_GREEN
 		if("blue")

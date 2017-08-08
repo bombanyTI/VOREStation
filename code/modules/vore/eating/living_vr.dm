@@ -376,11 +376,11 @@
 
 	// Prepare messages
 	if(user == pred) //Feeding someone to yourself
-		attempt_msg = text("<span class='warning'>[] is attemping to [] [] into their []!</span>",pred,lowertext(belly_target.vore_verb),prey,lowertext(belly_target.name))
-		success_msg = text("<span class='warning'>[] manages to [] [] into their []!</span>",pred,lowertext(belly_target.vore_verb),prey,lowertext(belly_target.name))
+		attempt_msg = text("<span class='warning'>[] is attemping to [] [] into their []!</span>",pred,rlowertext(belly_target.vore_verb),prey,rlowertext(belly_target.name))
+		success_msg = text("<span class='warning'>[] manages to [] [] into their []!</span>",pred,rlowertext(belly_target.vore_verb),prey,rlowertext(belly_target.name))
 	else //Feeding someone to another person
-		attempt_msg = text("<span class='warning'>[] is attempting to make [] [] [] into their []!</span>",user,pred,lowertext(belly_target.vore_verb),prey,lowertext(belly_target.name))
-		success_msg = text("<span class='warning'>[] manages to make [] [] [] into their []!</span>",user,pred,lowertext(belly_target.vore_verb),prey,lowertext(belly_target.name))
+		attempt_msg = text("<span class='warning'>[] is attempting to make [] [] [] into their []!</span>",user,pred,rlowertext(belly_target.vore_verb),prey,rlowertext(belly_target.name))
+		success_msg = text("<span class='warning'>[] manages to make [] [] [] into their []!</span>",user,pred,rlowertext(belly_target.vore_verb),prey,rlowertext(belly_target.name))
 
 	// Announce that we start the attempt!
 	user.visible_message(attempt_msg)

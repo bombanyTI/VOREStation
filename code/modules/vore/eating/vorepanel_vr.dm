@@ -310,14 +310,14 @@
 						return 1
 
 					var/datum/belly/TB = user.vore_organs[user.vore_selected]
-					user << "<span class='warning'>You begin to [lowertext(TB.vore_verb)] [M] into your [lowertext(TB.name)]!</span>"
-					M << "<span class='warning'>[user] begins to [lowertext(TB.vore_verb)] you into their [lowertext(TB.name)]!</span>"
+					user << "<span class='warning'>You begin to [rlowertext(TB.vore_verb)] [M] into your [rlowertext(TB.name)]!</span>"
+					M << "<span class='warning'>[user] begins to [rlowertext(TB.vore_verb)] you into their [rlowertext(TB.name)]!</span>"
 					M.loc << "<span class='warning'>Someone inside you is eating someone else!</span>"
 
 					sleep(TB.nonhuman_prey_swallow_time)
 					if((user in OB.internal_contents) && (M in OB.internal_contents))
-						user << "<span class='warning'>You manage to [lowertext(TB.vore_verb)] [M] into your [lowertext(TB.name)]!</span>"
-						M << "<span class='warning'>[user] manages to [lowertext(TB.vore_verb)] you into their [lowertext(TB.name)]!</span>"
+						user << "<span class='warning'>You manage to [rlowertext(TB.vore_verb)] [M] into your [rlowertext(TB.name)]!</span>"
+						M << "<span class='warning'>[user] manages to [rlowertext(TB.vore_verb)] you into their [rlowertext(TB.name)]!</span>"
 						M.loc << "<span class='warning'>Someone inside you has eaten someone else!</span>"
 						M.loc = user
 						TB.nom_mob(M)
@@ -407,7 +407,7 @@
 					var/datum/belly/B = user.vore_organs[choice]
 					if (!(tgt in selected.internal_contents))
 						return 0
-					tgt << "<span class='warning'>You're squished from [user]'s [lowertext(selected.name)] to their [lowertext(B.name)]!</span>"
+					tgt << "<span class='warning'>You're squished from [user]'s [rlowertext(selected.name)] to their [rlowertext(B.name)]!</span>"
 					selected.transfer_contents(tgt, B)
 
 
@@ -415,7 +415,7 @@
 		if(user.vore_organs.len >= BELLIES_MAX)
 			return 0
 
-		var/new_name = html_encode(input(usr,"New belly's name:","New Belly") as text|null)
+		var/new_name = rhtml_encode(input(usr,"New belly's name:","New Belly") as text|null)
 
 		if(length(new_name) > BELLIES_NAME_MAX || length(new_name) < BELLIES_NAME_MIN)
 			alert("Entered belly name length invalid (must be longer than [BELLIES_NAME_MIN], no more than than [BELLIES_NAME_MAX]).","Error")
@@ -437,7 +437,7 @@
 	//Please keep these the same order they are on the panel UI for ease of coding
 	////
 	if(href_list["b_name"])
-		var/new_name = html_encode(input(usr,"Belly's new name:","New Name") as text|null)
+		var/new_name = rhtml_encode(input(usr,"Belly's new name:","New Name") as text|null)
 
 		if(length(new_name) > BELLIES_NAME_MAX || length(new_name) < BELLIES_NAME_MIN)
 			alert("Entered belly name length invalid (must be longer than [BELLIES_NAME_MIN], no more than than [BELLIES_NAME_MAX]).","Error")
@@ -471,7 +471,7 @@
 			selected.digest_mode = input("Choose Mode (currently [selected.digest_mode])") in menu_list
 
 	if(href_list["b_desc"])
-		var/new_desc = html_encode(input(usr,"Belly Description (1024 char limit):","New Description",selected.inside_flavor) as message|null)
+		var/new_desc = rhtml_encode(input(usr,"Belly Description (1024 char limit):","New Description",selected.inside_flavor) as message|null)
 
 		if(new_desc)
 			new_desc = readd_quotes(new_desc)
@@ -535,7 +535,7 @@
 				return 0
 
 	if(href_list["b_verb"])
-		var/new_verb = html_encode(input(usr,"New verb when eating (infinitive tense, e.g. nom or swallow):","New Verb") as text|null)
+		var/new_verb = rhtml_encode(input(usr,"New verb when eating (infinitive tense, e.g. nom or swallow):","New Verb") as text|null)
 
 		if(length(new_verb) > BELLIES_NAME_MAX || length(new_verb) < BELLIES_NAME_MIN)
 			alert("Entered verb length invalid (must be longer than [BELLIES_NAME_MIN], no longer than [BELLIES_NAME_MAX]).","Error")
@@ -641,7 +641,7 @@
 			user << "<span class='notice'>Virgo-specific preferences saved!</span>"
 
 	if(href_list["setflavor"])
-		var/new_flavor = html_encode(input(usr,"What your character tastes like (40ch limit). This text will be printed to the pred after 'X tastes of...' so just put something like 'strawberries and cream':","Character Flavor",user.vore_taste) as text|null)
+		var/new_flavor = rhtml_encode(input(usr,"What your character tastes like (40ch limit). This text will be printed to the pred after 'X tastes of...' so just put something like 'strawberries and cream':","Character Flavor",user.vore_taste) as text|null)
 
 		if(new_flavor)
 			new_flavor = readd_quotes(new_flavor)

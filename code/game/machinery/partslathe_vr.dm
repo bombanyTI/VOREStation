@@ -1,6 +1,6 @@
 /*
 ** The Parts Lathe! Able to produce all tech level 1 stock parts for building machines!
-** 
+**
 ** The idea is that engineering etc should be able to build/repair basic technology machines
 ** without having to use a protolathe to print what are not prototype technologies.
 ** Some felt having an autolathe do this might be OP, so its a separate machine.
@@ -12,7 +12,7 @@
 ** Leshana says:
 ** - Phase 1 of this project adds the machine and basic operation.
 ** - Phase 2 will enhance usability by making & labeling boxes with a set of parts.
-** 
+**
 ** TODO - Implement phase 2 by adding cardboard boxes
 */
 
@@ -206,7 +206,7 @@
 // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 /obj/machinery/partslathe/proc/eject_materials(var/material, var/amount)
 	var/recursive = amount == -1 ? 1 : 0
-	material = lowertext(material)
+	material = rlowertext(material)
 	var/mattype
 	switch(material)
 		if(DEFAULT_WALL_MATERIAL)

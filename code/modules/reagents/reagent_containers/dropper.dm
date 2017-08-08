@@ -58,7 +58,7 @@
 			var/contained = reagentlist()
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been squirted with [name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [name] to squirt [M.name] ([M.key]). Reagents: [contained]</font>")
-			msg_admin_attack("[user.name] ([user.ckey]) squirted [M.name] ([M.key]) with [name]. Reagents: [contained] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+			msg_admin_attack("[user.name] ([user.ckey]) squirted [M.name] ([M.key]) with [name]. Reagents: [contained] (INTENT: [ruppertext(user.a_intent)]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
 			trans += reagents.splash(target, reagents.total_volume/2, max_spill=30)
 			trans += reagents.trans_to_mob(target, reagents.total_volume/2, CHEM_BLOOD) //I guess it gets into the bloodstream through the eyes or something

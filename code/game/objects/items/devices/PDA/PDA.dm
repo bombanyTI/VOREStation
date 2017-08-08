@@ -788,7 +788,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			if (in_range(src, U) && loc == U)
 				n = sanitizeSafe(n, extra = 0)
 				if (mode == 1)
-					note = html_decode(n)
+					note = cp1251_to_utf8(rhtml_decode(n))
 					notehtml = note
 					note = replacetext(note, "\n", "<br>")
 			else
@@ -819,7 +819,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			var/t = input(U, "Please enter new ringtone", name, ttone) as text
 			if (in_range(src, U) && loc == U)
 				if (t)
-					if(src.hidden_uplink && hidden_uplink.check_trigger(U, lowertext(t), lowertext(lock_code)))
+					if(src.hidden_uplink && hidden_uplink.check_trigger(U, rlowertext(t), rlowertext(lock_code)))
 						to_chat(U, "The PDA softly beeps.")
 						ui.close()
 					else
@@ -1091,7 +1091,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 	last_text = world.time
 	var/datum/reception/reception = get_reception(src, P, t)
-	t = reception.message
+	t = cp1251_to_utf8(reception.message)
 
 	if(reception.message_server && (reception.telecomms_reception & TELECOMMS_RECEPTION_SENDER)) // only send the message if it's stable
 		if(reception.telecomms_reception & TELECOMMS_RECEPTION_RECEIVER == 0) // Does our recipient have a broadcaster on their level?
@@ -1166,7 +1166,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	new_message(sending_device, sending_device.owner, sending_device.ownjob, message)
 
 /obj/item/device/pda/proc/new_message(var/sending_unit, var/sender, var/sender_job, var/message, var/reply = 1)
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
+	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[utf8_to_cp1251(message)]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
 	new_info(message_silent, ttone, reception_message)
 
 	log_pda("[usr] (PDA: [sending_unit]) sent \"[message]\" to [name]")
@@ -1176,9 +1176,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 /obj/item/device/pda/ai/new_message(var/atom/movable/sending_unit, var/sender, var/sender_job, var/message)
 	var/track = ""
 	if(ismob(sending_unit.loc) && isAI(loc))
-		track = "(<a href='byond://?src=\ref[loc];track=\ref[sending_unit.loc];trackname=[html_encode(sender)]'>Follow</a>)"
+		track = "(<a href='byond://?src=\ref[loc];track=\ref[sending_unit.loc];trackname=[rhtml_encode(sender)]'>Follow</a>)"
 
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" (<a href='byond://?src=\ref[src];choice=Message;notap=1;skiprefresh=1;target=\ref[sending_unit]'>Reply</a>) [track]"
+	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[utf8_to_cp1251(message)]\" (<a href='byond://?src=\ref[src];choice=Message;notap=1;skiprefresh=1;target=\ref[sending_unit]'>Reply</a>) [track]"
 	new_info(message_silent, newstone, reception_message)
 
 	log_pda("[usr] (PDA: [sending_unit]) sent \"[message]\" to [name]")
@@ -1424,7 +1424,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		// Until we run out of complete tags...
 		while(tag_start&&tag_stop)
 			var/pre = copytext(raw_scan,1,tag_start) // Get the stuff that comes before the tag
-			var/tag = lowertext(copytext(raw_scan,tag_start+1,tag_stop)) // Get the tag so we can do intellegent replacement
+			var/tag = rlowertext(copytext(raw_scan,tag_start+1,tag_stop)) // Get the tag so we can do intellegent replacement
 			var/tagend = findtext(tag," ") // Find the first space in the tag if there is one.
 
 			// Anything that's before the tag can just be added as is.

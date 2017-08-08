@@ -61,9 +61,9 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	M.lastattacker = user
 
 	if(!no_attack_log)
-		user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [M.name] ([M.ckey]) with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])</font>"
-		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [user.name] ([user.ckey]) with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])</font>"
-		msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])" )
+		user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [M.name] ([M.ckey]) with [name] (INTENT: [ruppertext(user.a_intent)]) (DAMTYE: [ruppertext(damtype)])</font>"
+		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [user.name] ([user.ckey]) with [name] (INTENT: [ruppertext(user.a_intent)]) (DAMTYE: [ruppertext(damtype)])</font>"
+		msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [name] (INTENT: [ruppertext(user.a_intent)]) (DAMTYE: [ruppertext(damtype)])" )
 	/////////////////////////
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)

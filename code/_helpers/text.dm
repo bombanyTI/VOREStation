@@ -23,7 +23,7 @@
  */
 
 //Used for preprocessing entered text
-/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1)
+/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1, var/index = 1)
 	if(!input)
 		return
 
@@ -35,19 +35,30 @@
 
 	if(encode)
 		// The below \ escapes have a space inserted to attempt to enable Travis auto-checking of span class usage. Please do not remove the space.
-		//In addition to processing html, html_encode removes byond formatting codes like "\ red", "\ i" and other.
+		//In addition to processing html, rhtml_encode removes byond formatting codes like "\ red", "\ i" and other.
 		//It is important to avoid double-encode text, it can "break" quotes and some other characters.
 		//Also, keep in mind that escaped characters don't work in the interface (window titles, lower left corner of the main window, etc.)
-		input = html_encode(input)
+		input = rhtml_encode(input)
 	else
 		//If not need encode text, simply remove < and >
 		//note: we can also remove here byond formatting codes: 0xFF + next byte
-		input = replace_characters(input, list("<"=" ", ">"=" "))
+		input = replace_characters(input, list("<"=" ", ">"=" ", "ÿ"="&#255"))
 
 	if(trim)
 		//Maybe, we need trim text twice? Here and before copytext?
 		input = trim(input)
 
+	if(index)
+		//Maybe, we need in fix "ÿ"? Here and before it send's to chat?
+		var/ohfix = findtext(input, "ÿ")
+		input = replacetext(input, "ÿ", "&#255;")
+
+	return input
+
+/proc/rhtml_encode(var/input)
+	input = replacetext(input, "<", "&lt;")
+	input = replacetext(input, ">", "&gt;")
+	input = replacetext(input, "ÿ", "&#255;")
 	return input
 
 //Run sanitize(), but remove <, >, " first to prevent displaying them as &gt; &lt; &34; in some places, after html_encode().
@@ -137,7 +148,7 @@
 
 //Old variant. Haven't dared to replace in some places.
 /proc/sanitize_old(var/t,var/list/repl_chars = list("\n"="#","\t"="#"))
-	return html_encode(replace_characters(t,repl_chars))
+	return rhtml_encode(replace_characters(t,repl_chars))
 
 /*
  * Text searches
@@ -218,7 +229,7 @@
 
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(var/t as text)
-	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
+	return ruppertext(copytext(t, 1, 2)) + copytext(t, 2)
 
 //This proc strips html properly, remove < > and all text between
 //for complete text sanitizing should be used sanitize()
@@ -297,7 +308,7 @@ proc/TextPreview(var/string,var/len=40)
 
 //alternative copytext() for encoded text, doesn't break html entities (&#34; and other)
 /proc/copytext_preserve_html(var/text, var/first, var/last)
-	return html_encode(copytext(html_decode(text), first, last))
+	return rhtml_encode(copytext(rhtml_decode(text), first, last))
 
 //For generating neat chat tag-images
 //The icon var could be local in the proc, but it's a waste of resources

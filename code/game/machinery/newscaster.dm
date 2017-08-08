@@ -504,7 +504,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	if((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
 		usr.set_machine(src)
 		if(href_list["set_channel_name"])
-			channel_name = sanitizeSafe(input(usr, "Provide a Feed Channel Name", "Network Channel Handler", ""), MAX_LNAME_LEN)
+			channel_name = cp1251_to_utf8(sanitizeSafe(input(usr, "Provide a Feed Channel Name", "Network Channel Handler", ""), MAX_LNAME_LEN))
 			updateUsrDialog()
 			//update_icon()
 
@@ -604,7 +604,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			updateUsrDialog()
 
 		else if(href_list["set_wanted_name"])
-			channel_name = sanitizeSafe(input(usr, "Provide the name of the Wanted person", "Network Security Handler", ""), MAX_LNAME_LEN)
+			channel_name = russian_to_utf8(sanitizeSafe(input(usr, "Provide the name of the Wanted person", "Network Security Handler", ""), MAX_LNAME_LEN))
 			updateUsrDialog()
 
 		else if(href_list["set_wanted_desc"])
@@ -919,7 +919,7 @@ obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		if(scribble_page == curr_page)
 			user << "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>"
 		else
-			var/s = sanitize(input(user, "Write something", "Newspaper", ""))
+			var/s = cp1251_to_utf8(sanitize(input(user, "Write something", "Newspaper", "")))
 			s = sanitize(s)
 			if(!s)
 				return
