@@ -23,7 +23,7 @@
  */
 
 //Used for preprocessing entered text
-/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1, var/index = 1)
+/proc/sanitize(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1)
 	if(!input)
 		return
 
@@ -53,12 +53,6 @@
 		//Maybe, we need trim text twice? Here and before copytext?
 		input = trim(input)
 
-	return input
-
-/proc/rhtml_encode(var/input)
-	input = replacetext(input, "<", "&lt;")
-	input = replacetext(input, ">", "&gt;")
-	input = replacetext(input, "ÿ", "&#255;")
 	return input
 
 //Run sanitize(), but remove <, >, " first to prevent displaying them as &gt; &lt; &34; in some places, after html_encode().
