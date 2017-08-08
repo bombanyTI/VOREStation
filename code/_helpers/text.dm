@@ -28,6 +28,11 @@
 		return
 
 	if(max_length)
+		//testing shows that just looking for > max_length alone will actually cut off the final character if message is precisely max_length, so >= instead
+		if(length(input) >= max_length)
+			var/overflow = ((length(input)+1) - max_length)
+			to_chat(usr, "<span class='warning'>Your message is too long by [overflow] character\s.</span>")
+			return
 		input = copytext(input,1,max_length)
 
 	if(extra)
@@ -42,16 +47,11 @@
 	else
 		//If not need encode text, simply remove < and >
 		//note: we can also remove here byond formatting codes: 0xFF + next byte
-		input = replace_characters(input, list("<"=" ", ">"=" ", "ÿ"="&#255"))
+		input = replace_characters(input, list("<"=" ", ">"=" "))
 
 	if(trim)
 		//Maybe, we need trim text twice? Here and before copytext?
 		input = trim(input)
-
-	if(index)
-		//Maybe, we need in fix "ÿ"? Here and before it send's to chat?
-		var/ohfix = findtext(input, "ÿ")
-		input = replacetext(input, "ÿ", "&#255;")
 
 	return input
 
