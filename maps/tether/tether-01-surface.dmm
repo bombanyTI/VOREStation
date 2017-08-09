@@ -1943,7 +1943,7 @@
 "aLs" = (/obj/effect/floor_decal/techfloor{dir = 1},/obj/machinery/light/small{dir = 1},/obj/structure/table/steel,/obj/item/weapon/storage/fancy/candle_box,/turf/simulated/floor/tiled/techfloor,/area/maintenance/lower/mining)
 "aLt" = (/obj/effect/floor_decal/techfloor{dir = 1},/obj/machinery/vending/sovietsoda,/turf/simulated/floor/tiled/techfloor,/area/maintenance/lower/mining)
 "aLu" = (/obj/effect/floor_decal/techfloor{dir = 1},/obj/machinery/vending/cigarette{name = "Cigarette machine"; prices = list(); products = list(/obj/item/weapon/storage/fancy/cigarettes = 10, /obj/item/weapon/storage/box/matches = 10, /obj/item/weapon/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)},/turf/simulated/floor/tiled/techfloor,/area/maintenance/lower/mining)
-"aLv" = (/obj/effect/floor_decal/techfloor{dir = 1},/obj/machinery/status_display{pixel_y = 30},/turf/simulated/floor/tiled/techfloor,/area/maintenance/lower/mining)
+"aLv" = (/obj/effect/floor_decal/techfloor{dir = 1},/obj/machinery/status_display{pixel_y = 30},/obj/machinery/vending/kink,/turf/simulated/floor/tiled/techfloor,/area/maintenance/lower/mining)
 "aLw" = (/obj/effect/floor_decal/techfloor{dir = 1},/obj/effect/floor_decal/techfloor/hole/right{dir = 1},/obj/structure/bed/padded,/obj/item/weapon/bedsheet/purple,/turf/simulated/floor/tiled/techfloor,/area/maintenance/lower/mining)
 "aLx" = (/obj/effect/floor_decal/techfloor{dir = 1},/obj/machinery/newscaster{pixel_y = 32},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor,/area/maintenance/lower/mining)
 "aLy" = (/obj/effect/floor_decal/techfloor{dir = 1},/obj/structure/bed/padded,/obj/item/weapon/bedsheet/mime,/turf/simulated/floor/tiled/techfloor,/area/maintenance/lower/mining)
@@ -5778,3 +5778,4 @@ bqDbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbq
 bqDbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqEbqD
 bqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqDbqD
 "}
+
