@@ -1,0 +1,19 @@
+/obj/item/weapon/material/twohanded/spear/fluff/jack
+	name = "graceful spear"
+	desc = "An old spear, but of the great design."
+	icon = 'icons/obj/xenostation.dmi'
+	icon_state = "spear_f_mask1"
+	base_icon = "spear_f_mask"
+	force = 15
+	w_class = ITEMSIZE_LARGE
+	slot_flags = SLOT_BACK
+	force_divisor = 0.75
+	unwielded_force_divisor = 0.375
+	thrown_force_divisor = 1.5
+	throw_speed = 3
+	edge = 0
+	sharp = 1
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
+	fragile = 1
+	unbreakable = 1
