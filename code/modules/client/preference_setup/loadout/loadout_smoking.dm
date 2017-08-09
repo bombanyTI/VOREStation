@@ -41,3 +41,23 @@
 		var/obj/item/weapon/storage/fancy/cigarettes/cigarette_brand = cigarette
 		cigarettes[initial(cigarette_brand.name)] = cigarette_brand
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(cigarettes))
+
+/datum/gear/accessory/ecig
+	display_name = "Electronic Cigarette"
+	path = /obj/item/clothing/mask/smokable/ecig/simple
+	cost = 2
+
+/datum/gear/accessory/ecigcart
+	display_name = "Electronic Cigarette Cartridge"
+	path = /obj/item/weapon/reagent_containers/ecig_cartridge/med_nicotine
+
+/datum/gear/accessory/ecigcart/New()
+	..()
+	var/list/ecig_cartridge = list()
+	ecig_cartridge["tobacco flavour cartridge"] = /obj/item/weapon/reagent_containers/ecig_cartridge/med_nicotine
+	ecig_cartridge["high nicotine tobacco flavour cartridge"] = /obj/item/weapon/reagent_containers/ecig_cartridge/high_nicotine
+	ecig_cartridge["orange flavour cartridge"] = /obj/item/weapon/reagent_containers/ecig_cartridge/orange
+	ecig_cartridge["mint flavour cartridge"] = /obj/item/weapon/reagent_containers/ecig_cartridge/mint
+	ecig_cartridge["watermelon flavour cartridge"] = /obj/item/weapon/reagent_containers/ecig_cartridge/watermelon
+	ecig_cartridge["grape flavour cartridge"] = /obj/item/weapon/reagent_containers/ecig_cartridge/grape
+	gear_tweaks += new/datum/gear_tweak/path(ecig_cartridge)

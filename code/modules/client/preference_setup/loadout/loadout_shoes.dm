@@ -245,17 +245,14 @@
 	allowed_roles = list("Botanist", "Xenobiologist")
 
 /datum/gear/shoes/cuffs
-	display_name = "gilded leg wraps"
-	path = /obj/item/clothing/shoes/black/cuffs
+	display_name = "leg wraps"
+	path = /datum/gear/shoes/cuffs
 
-/datum/gear/shoes/cuffs/blue
-	display_name = "blue leg wraps"
-	path = /obj/item/clothing/shoes/black/cuffs/blue
-
-/datum/gear/shoes/cuffs/red
-	display_name = "red leg wraps"
-	path = /obj/item/clothing/shoes/black/cuffs/red
-
-/datum/gear/shoes/cuffs/octavious
-	display_name = "octavious leg wraps"
-	path = /obj/item/clothing/shoes/black/cuffs/octavious
+/datum/gear/shoes/cuffs/New()
+	..()
+	var/list/cuffs = list()
+	cuffs["gilded leg wraps"] = path = /obj/item/clothing/shoes/black/cuffs
+	cuffs["blue leg wraps"] = path = /obj/item/clothing/shoes/black/cuffs/blue
+	cuffs["red leg wraps"] = path = /obj/item/clothing/shoes/black/cuffs/red
+	cuffs["octavious leg wraps"] = path = /obj/item/clothing/shoes/black/cuffs/octavious
+	gear_tweaks += new/datum/gear_tweak/path(cuffs)
