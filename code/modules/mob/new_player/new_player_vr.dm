@@ -12,7 +12,7 @@
 		pass = FALSE
 
 	//Do they have their scale properly setup?
-	if(!client.prefs.size_multiplier && client.prefs.size_multiplier != 0)
+	if(!client.prefs.size_multiplier || client.prefs.size_multiplier == 0)
 		pass = FALSE
 		to_chat(src,"<span class='warning'>You have not set your scale yet. Do this on the VORE tab in character setup.</span>")
 
