@@ -8,10 +8,9 @@ Thumbs.db
 *.backup
 data/
 cfg/
+!cfg/motd.txt
 
 code/game/gamemodes/technomancer/spells/projectile/overload.dm
 code/game/gamemodes/technomancer/spells/projectile/overload.dm
 code/modules/client/preference_setup/loadout/loadout_xeno.dm
 temp.dmi
-
-!motd.txt
