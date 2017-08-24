@@ -16,6 +16,10 @@
 		pass = FALSE
 		to_chat(src,"<span class='warning'>You have not set your scale yet. Do this on the VORE tab in character setup.</span>")
 
+	if(client.prefs.size_multiplier > 1.5 || client.prefs.size_multiplier < 0.5)
+		pass = FALSE
+		to_chat(src, "<span class='warning'>Size restriction. Please change your scale.</span>")
+
 	//Custom species checks
 	if (client && client.prefs && client.prefs.species == "Custom Species")
 
