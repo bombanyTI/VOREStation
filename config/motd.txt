@@ -1,0 +1,5 @@
+<h1>Welcome to the Virgo Station 13!</h1>
+
+-<i>Here, we use a modified and slightly fixed version of VOREstation build. Have fun with that.</i>
+<br><br>
+<strong>¬нимание! ѕри первом заходе на сервере вам нужно вручную выставить размер персонажа в вкладке Vore(Scale)</strong>
